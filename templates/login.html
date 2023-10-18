@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sistema de Seguimiento Conductual</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #483fca;
+            font-family: 'Arial', sans-serif;  /* Cambia el tipo de letra a Arial */
+        }
+        .login-container {
+            max-width: 20%;  /* Reduce el ancho del contenedor a 30% */
+            margin: auto;
+            padding-top: 10%;
+        }
+        .btn-primary {
+            display: block;
+            width: auto;  /* Restaura el ancho original del botón */
+        }
+        h1{
+            color: white;
+            font-family: 'Lato', sans-serif; font-size: 54px; font-weight: 300; line-height: 58px; margin: 0 0 58px;
+            text-shadow: 0px 4px 10px rgba(179, 147, 211, 0.8)
+            
+        }
+    </style>
+</head>
+<body>
+    <br><br>
+    <h1 class="text-center">Sistema de Seguimiento Conductual</h1>
+    <div class="container login-container">
+        
+        <!-- Agrega un espacio de 3 líneas -->
+        <br><br><br>
+        <form action="/login" method="post">
+            <div class="form-group">
+                <!-- Aquí es donde agregamos el texto de "Usuario:" dentro del campo de texto -->
+                <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Usuario" required>
+            </div>
+            <div class="form-group">
+                <!-- Aquí es donde agregamos el texto de "Contraseña:" dentro del campo de texto -->
+                <input type="password" class="form-control" id="password" name="password" placeholder="Contraseña" required>
+            </div>
+            <center><button type="submit" class="btn btn-primary">Iniciar sesión</button></center>
+        </form>
+    </div>
+</body>
+</html>

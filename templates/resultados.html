@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resultados de la búsqueda</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="#">SSC</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('busqueda') }}">Busqueda</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('reporte') }}">Reporte</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('logout') }}">Cerrar sesión</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    <div class="container">
+        <h2>Resultados de la búsqueda</h2>
+        <!-- Aquí es donde agregamos el número de resultados -->
+        <h3>{{ resultados|length }} resultados encontrados</h3>
+        
+        {% if resultados %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th><a href="/resultados?ordenar=matricula">Matrícula</a></th>
+                    <th><a href="/resultados?ordenar=grupo">Grupo</a></th>
+                    <th><a href="/resultados?ordenar=nombre">Nombre</a></th>
+                    <th><a href="/resultados?ordenar=apepat">Apellido Paterno</a></th>
+                    <th><a href="/resultados?ordenar=apemat">Apellido Materno</a></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for resultado in resultados %}
+                <tr>
+                    <td>{{ resultado[0] }}</td>
+                    <td>{{ resultado[1] }}</td>
+                    <td>{{ resultado[2] }}</td>
+                    <td>{{ resultado[3] }}</td>
+                    <td>{{ resultado[4] }}</td>
+                    <td>{{ resultado[5] }}</td>
+                    <td><a href="{{ url_for('ficha', matricula=resultado[0]) }}" class="btn btn-primary">Comentar</a></td>
+                </tr>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- Aquí están los nuevos botones -->
+        <form action="/busqueda" method="get">
+            <button type="submit" class="btn btn-primary">Nueva búsqueda</button>
+        </form>
+
+        <form action="/logout" method="post">
+            <button type="submit" class="btn btn-danger">Salir</button>
+        </form>
+
+        {% else %}
+        <p>No se encontraron resultados.</p>
+
+        <!-- Aquí están los nuevos botones -->
+        <form action="/busqueda" method="get">
+            <button type="submit" class="btn btn-primary">Nueva búsqueda</button>
+        </form>
+
+        
+
+        {% endif %}
+    </div>
+</body>
+</html>
+
